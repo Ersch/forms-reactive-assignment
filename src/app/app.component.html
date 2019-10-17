@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!--
+          Create a Form with the following Controls and Validators
+          1) Project Name (should not be empty)
+          2) Mail (should not be a empty and a valid email)
+          3) Project Status Dropdown, with three values: 'Stable', 'Critical', 'Finished'
+          4) Submit Button
+
+          Add your own Validator which doesn't allow "Test" as a Project Name
+
+          Also implement that Validator as an async Validator (replace the other one)
+
+          Upon submitting the form, simply print the value to the console
+      -->
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input
+        type="text"
+        id="projectName"
+        formControlName="projectname"
+        class="form-control"
+        placeholder="Project Name">
+      <br>
+      <input
+        type="text"
+        id="email"
+        formControlName="email"
+        class="form-control"
+        placeholder="email">
+      <br>
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let s of status" [value]="s">
+            {{s}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-flat-button color="primary">Submit</button>
+    </form>
+  </div>
+  <div *ngIf="submitted" class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" >
+    <p>{{form.get('projectname').value}}</p><br>
+    <p>{{form.get('email').value}}</p><br>
+    <p>{{form.get('status').value}}</p>
+  </div>
+  </div>
+
