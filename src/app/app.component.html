@@ -25,6 +25,10 @@
         class="form-control"
         placeholder="Project Name">
       <br>
+      <span *ngIf="!form.get('projectname').valid && form.get('projectname').touched">
+        This project name is invalid!
+      </span>
+      <br>
       <input
         type="text"
         id="email"
@@ -34,7 +38,7 @@
       <br>
       <mat-form-field>
         <mat-label>Status</mat-label>
-        <mat-select>
+        <mat-select formControlName="status">
           <mat-option *ngFor="let s of status" [value]="s">
             {{s}}
           </mat-option>
@@ -44,10 +48,10 @@
       <button mat-flat-button color="primary">Submit</button>
     </form>
   </div>
-  <div *ngIf="submitted" class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" >
+  <div *ngIf="submitted" class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
     <p>{{form.get('projectname').value}}</p><br>
     <p>{{form.get('email').value}}</p><br>
     <p>{{form.get('status').value}}</p>
   </div>
-  </div>
+</div>
 
