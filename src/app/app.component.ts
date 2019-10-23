@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
           null,
           [Validators.minLength(1)], this.forbiddenPojectNameAsyncValidator),
       'email': new FormControl(null, Validators.email),
-      'status': new FormControl()
+      'status': new FormControl('Critical')
     });
 
 
